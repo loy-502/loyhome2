@@ -16,47 +16,296 @@
 
     <style>
         body {
-            margin: 0 auto;
+            margin: 0;
             background-color: #778a42;
-            min-width: 1355px;
         }
 
-        .pv-box {
-            max-width: 2560px;
-            margin: 0 auto;
+        .today_close,
+        .close,
+        .close_x {
+            text-decoration: none;
+        }
+
+        .today_close {
+            color: #ffffff;
+        }
+
+        .content_wide {
+            min-width: 280px;
         }
 
         .bg01 {
             /* 페이지 1 배경 이미지 */
             background-image: url("img/sg_event01.png");
             width: 100%;
-            height: 0%;
-            padding-bottom: calc(1444/2560*100%);
-            /*calc(이미지 높이/이미지 너비*100%)*/
+            height: 1444px;
         }
 
         .bg02 {
             /* 페이지 2 배경 이미지 */
             background-image: url("img/sg_event02_01.png");
             width: 100%;
-            height: 0%;
-            padding-bottom: calc(1673/2560*100%);
-            /*calc(이미지 높이/이미지 너비*100%)*/
+            height: 1673px;
         }
 
         .bg03 {
             /* 페이지 2 배경 이미지 */
             background-image: url("img/sg_event02_02.png");
             width: 100%;
-            height: 0%;
-            padding-bottom: calc(1106/2560*100%);
-            /*calc(이미지 높이/이미지 너비*100%)*/
+            height: 1106px;
         }
 
         .bg {
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: contain;
+        }
+
+
+
+        /* 뷰포트----------------------------------------------------------------------------------------------------*/
+        @media all and (max-width: 1355px) {
+            .bg {
+                background-size: contain;
+                height: 0%;
+                min-width: 280px;
+                max-width: 1355px;
+            }
+
+            .bg01 {
+                background-image: url("img/sg_event01_1.png");
+                padding-bottom: calc(1444/1355*100%);
+                /*calc(이미지 높이/이미지 너비*100%)*/
+            }
+
+            .bg02 {
+                background-image: url("img/sg_event02_01_1.png");
+                padding-bottom: calc(1673/1355*100%);
+                /*calc(이미지 높이/이미지 너비*100%)*/
+            }
+
+            .bg03 {
+                background-image: url("img/sg_event02_02_1.png");
+                padding-bottom: calc(1106/1355*100%);
+                /*calc(이미지 높이/이미지 너비*100%)*/
+            }
+
+        }
+
+
+
+        /* 레이어 팝업 CSS */
+
+        #popup_bg {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            z-index: 999999;
+            display: none;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            min-width: 280px;
+        }
+
+        .popup_wrap {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin: 20px 20px;
+            min-width: 180px;
+            max-width: 400px;
+
+            transform: All 0.9s ease;
+            -webkit-transition: All 0.9s ease;
+            -moz-transform: All 0.9s ease;
+            -o-transition: All 0.9s ease;
+        }
+
+        #popup img {
+            display: block;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+
+        .close,
+        .today_close {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .close {
+            top: 7px;
+            right: 7px;
+        }
+
+        .x {
+            width: 1.5rem;
+            /*24px*/
+            height: 1.5rem;
+            /*24px*/
+            color: #fff;
+            font-size: 0.625rem;
+            /*10px*/
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .today_close {
+            bottom: 10px;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 0.625rem;
+            /*10px*/
+            font-weight: 700;
+        }
+
+        .close_x {
+            font-size: 0.625rem;
+            /*10px*/
+            width: 20px;
+            height: 20px;
+        }
+
+
+        /* 데스크탑/노트북CSS----------------------------------------------------------------------------------------------------
+	1280-1025px (브라우저)
+	*/
+        @media all and (max-width: 1280px) {}
+
+        .popup_wrap {
+            max-width: 350px;
+        }
+
+        .today_close {
+            bottom: 7px;
+        }
+
+        .close_x {
+            font-size: 0.5rem;
+            /*10px*/
+            width: 18px;
+            height: 18px;
+        }
+
+
+        /* 태블릿CSS----------------------------------------------------------------------------------------------------
+	1024-768px (반응형)
+	*/
+        @media all and (max-width: 1024px) {
+            .popup_wrap {
+                border-radius: 25px;
+                max-width: 300px;
+            }
+
+            .today_close {
+                bottom: 1%;
+            }
+        }
+
+        /* 태블릿/모바일_가로CSS----------------------------------------------------------------------------------------------------
+	767-481px (반응형)
+	*/
+        @media all and (max-width: 767px) {
+            .popup_wrap {
+                border-radius: 20px;
+            }
+
+            .x {
+                width: 1.25rem;
+                /*20px*/
+                height: 1.25rem;
+                /*20px*/
+                font-size: 0.5rem;
+                /*8px*/
+            }
+
+            .today_close {
+                bottom: 1.5%;
+                font-size: 0.5rem;
+                /*8px*/
+            }
+
+            .close_x {
+                font-size: 0.5rem;
+                /*8px*/
+                width: 1rem;
+                /*16px*/
+                height: 1rem;
+                /*16px*/
+            }
+        }
+
+
+        /* 모바일CSS----------------------------------------------------------------------------------------------------
+	480-281px (반응형)
+	*/
+
+        @media all and (max-width: 480px) {
+            .popup_wrap {
+                border-radius: 15px;
+                max-width: 250px;
+            }
+
+            .x {
+                width: 1rem;
+                /*16px*/
+                height: 1rem;
+                /*16px*/
+            }
+
+            .today_close {
+                font-size: 0.5rem;
+                /*8px*/
+            }
+
+            .close_x {
+                font-size: 0.5rem;
+                /*8px*/
+                width: 0.75rem;
+                /*12px*/
+                height: 0.75rem;
+                /*12px*/
+            }
+        }
+
+
+        /* 모바일CSS----------------------------------------------------------------------------------------------------
+	280px (min-withd 280px 고정)
+	*/
+
+        @media all and (max-width: 280px) {
+            .popup_wrap {
+                max-width: 180px;
+            }
+
+            .x {
+                width: 0.75rem;
+                /*12px*/
+                height: 0.75rem;
+                /*12px*/
+                font-size: 0.375rem;
+                /*6px*/
+            }
+
+            .today_close {
+                font-size: 0.375rem;
+                /*6px*/
+                bottom: 0.5%;
+            }
+
+            .close_x {
+                width: 0.75rem;
+                /*12px*/
+                height: 0.75rem;
+                /*12px*/
+            }
         }
     </style>
 </head>
@@ -75,6 +324,85 @@
             <div class="fade-wrap bg bg03"> </div><!-------------------------------------------------- 03 페이지 -->
         </div>
     </div>
+
+    <!-- 레이어 팝업 섹션-------------------------------------------------->
+    <div id="popup_bg" class="show">
+        <div class="popup_wrap">
+            <img src="img/popup.png">
+            <a class="close x" href="javascript:;" onclick="closeWin();" alt="닫기">✖</a>
+            <a class="today_close" href="javascript:;" onclick="todaycloseWin();" alt="오늘 하루 열지 않기">오늘은 그만 볼래요 <div
+                    class="close_x x">✖</div></a>
+        </div>
+    </div>
+
+
+
+    <!--레이어 팝업 JS-->
+    <script>
+        //팝업 자동 띄우기	https://tyson.tistory.com/90 참고
+        jQuery(document).ready(function () {
+            $('.').show();
+        });
+
+        //Esc로 팝업창을 닫기
+        window.onkeyup = function (e) {
+            var key = e.keyCode ? e.keyCode : e.which;
+
+            if (key == 27) {
+                $("#popup_bg").fadeOut(90);
+                $("body").css({ overflow: '' }).unbind('popup_bg');
+            }
+        }
+
+        /* 외부영역 클릭시 팝업 닫기 */
+        $(document).mouseup(function (e) {
+            if ($("#popup_bg").has(e.target).length === 0) {
+                $("#popup_bg").hide();
+            }
+        });
+
+        //팝업 닫기
+        popup_bg.querySelector('.close').addEventListener('click', function () {
+            popup_bg.style.display = 'none';
+        });
+
+
+
+        //오늘 하루 보지 않기	https://slyeee.tistory.com/30 참고
+        $(document).ready(function () {
+            cookiedata = document.cookie;
+
+            if (cookiedata.indexOf("ncookie=done") < 0) {
+                document.getElementById('popup_bg').style.display = "inlineblock";
+                $("#wrap").prepend('<div id="dimm-cookie" onclick="dimm_close();" class="black" />');
+            } else {
+                document.getElementById('popup_bg').style.display = "none";
+            }
+        });
+
+        function setCookie(name, value, expiredays) {
+            var todayDate = new Date();
+            todayDate.setDate(todayDate.getDate() + expiredays);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+        }
+
+        function closeWin() {
+            document.getElementById('popup_bg').style.display = "none";
+            $("#dimm-cookie").remove();
+        }
+
+        function todaycloseWin() {
+            setCookie("ncookie", "done", 1);
+            document.getElementById('popup_bg').style.display = "none";
+            $("#dimm-cookie").remove();
+        }
+
+        function dimm_close() {
+            $("#dimm-cookie").remove();
+            document.getElementById('popup_bg').style.display = "none";
+        }
+    </script>
+
 
 </body>
 
