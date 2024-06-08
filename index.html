@@ -55,6 +55,13 @@
             height: 1106px;
         }
 
+        .bg04 {
+            /* 페이지 2 배경 이미지 */
+            background-image: url("img/sg_event03.png");
+            width: 100%;
+            height: 1106px;
+        }
+
         .bg {
             background-repeat: no-repeat;
             background-position: center center;
@@ -89,12 +96,18 @@
                 /*calc(이미지 높이/이미지 너비*100%)*/
             }
 
+            .bg04 {
+                background-image: url("img/sg_event03_1.png");
+                padding-bottom: calc(1106/1355*100%);
+                /*calc(이미지 높이/이미지 너비*100%)*/
+            }
+
         }
 
 
 
         /* 레이어 팝업 CSS */
-
+        /*
         #popup_bg {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100vw;
@@ -147,12 +160,12 @@
         .x {
             width: 1.5rem;
             /*24px*/
-            height: 1.5rem;
+        /*            height: 1.5rem;
             /*24px*/
-            color: #fff;
+        /*            color: #fff;
             font-size: 0.625rem;
             /*10px*/
-            display: inline-flex;
+        /*            display: inline-flex;
             justify-content: center;
             align-items: center;
         }
@@ -163,16 +176,16 @@
             transform: translateX(50%);
             font-size: 0.625rem;
             /*10px*/
-            font-weight: 700;
+        /*            font-weight: 700;
         }
 
         .close_x {
             font-size: 0.625rem;
             /*10px*/
-            width: 20px;
+        /*            width: 20px;
             height: 20px;
         }
-
+*/
 
         /* 데스크탑/노트북CSS----------------------------------------------------------------------------------------------------
 	1280-1025px (브라우저)
@@ -323,21 +336,24 @@
         <div class="pv-box"><!-- 전체 최대 너비 2560px -->
             <div class="fade-wrap bg bg03"> </div><!-------------------------------------------------- 03 페이지 -->
         </div>
+        <div class="pv-box"><!-- 전체 최대 너비 2560px -->
+            <div class="fade-wrap bg bg04"> </div><!-------------------------------------------------- 03 페이지 -->
+        </div>
     </div>
 
     <!-- 레이어 팝업 섹션-------------------------------------------------->
-    <div id="popup_bg" class="show">
+    <!-- <div id="popup_bg" class="show">
         <div class="popup_wrap">
             <img src="img/popup.png">
             <a class="close x" href="javascript:;" onclick="closeWin();" alt="닫기">✖</a>
             <a class="today_close" href="javascript:;" onclick="todaycloseWin();" alt="오늘 하루 열지 않기">오늘은 그만 볼래요 <div
                     class="close_x x">✖</div></a>
         </div>
-    </div>
+    </div>-->
 
 
 
-    <!--레이어 팝업 JS-->
+    <!--레이어 팝업 JS--> <!--
     <script>
         //팝업 자동 띄우기	https://tyson.tistory.com/90 참고
         jQuery(document).ready(function () {
@@ -400,8 +416,8 @@
         function dimm_close() {
             $("#dimm-cookie").remove();
             document.getElementById('popup_bg').style.display = "none";
-        }
-    </script>
+    } 
+    </script>   -->
 
 
 </body>
